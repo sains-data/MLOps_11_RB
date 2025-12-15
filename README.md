@@ -43,8 +43,33 @@ Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
 
 ---
 
+## 🏗️ Arsitektur Sistem
+
+1. Data Collection
+   ↓
+2. Preprocessing (resize 224x224, normalization, augmentation)
+   ↓
+3. Data Splitting (Train 80%, Validation 10%, Test 10%)
+   ↓
+4. Model Building (MobileNetV2 base + custom layers)
+   ↓
+5. Model Training (with MLflow tracking)
+   ↓
+6. Model Evaluation & Validation
+   ↓
+7. Model Export (.h5 format)
+   ↓
+8. Deployment (Hugging Face Spaces)
+
+---
+
 ## 📂 Dataset
 Dataset tersedia di Google Drive: **(https://www.kaggle.com/datasets/buyungsaloka/motif-batik-dataset)**
+
+### **Karakteristik Dataset:**
+- **Total Gambar**: ~1,400 gambar (14 kelas × ~100 gambar/kelas)
+- **Format**: JPG/PNG
+- **Resolusi**: Bervariasi (di-resize ke 224×224 untuk training)
 
 Struktur dataset:
 
@@ -65,6 +90,8 @@ archive/
 └─ ...
 
 ```
+
+---
 
 ## 📑 Struktur Direktori
 
