@@ -1,1 +1,2 @@
-
+FILENAME = "model_batik_mobilenetv2.weights.h5"
+model_MobileNetV2.save_weights(FILENAME)
