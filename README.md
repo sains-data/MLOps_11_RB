@@ -2,9 +2,6 @@
 
 Proyek ini bertujuan untuk melakukan **klasifikasi gambar motif batik** menggunakan arsitektur **MobileNetV2** sebagai _feature extractor_ dan lapisan tambahan untuk prediksi multi-kelas. Semua eksperimen, parameter, dan metrik dicatat menggunakan **MLflow** untuk memudahkan pelacakan dan reproduksi.
 
-🌐 **Demo Aplikasi (Hugging Face Spaces):**  
-👉 https://huggingface.co/spaces/Nabiilah-Putri/Klasifikasi-Motif-Batik
-
 ---
 
 ## 🎯 Tujuan Proyek
@@ -202,8 +199,8 @@ huggingface-hub
 ```
 ---
 
-## Hugging Face
-Link: https://huggingface.co/spaces/Nabiilah-Putri/Klasifikasi-Motif-Batik
+🌐 **Demo Aplikasi (Hugging Face Spaces):**  
+👉 https://huggingface.co/spaces/Nabiilah-Putri/Klasifikasi-Motif-Batik
 
 ---
 
