@@ -65,6 +65,25 @@ Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
 
 ---
 
+## 📑 Struktur Direktori
+
+```
+.
+├─ README.md
+├─ Kode/
+│  └─ klasifikasi_batik.ipynb
+├─ src/
+│  ├─ app.py
+├─ requirements.txt
+└─ artifacts/
+   ├─ best_model_MobileNetV2.h5
+   ├─ model_batik_mobilenetv2.keras
+   └─ mlruns/
+
+```
+
+---
+
 ## 📂 Dataset
 Dataset tersedia di Google Drive: **(https://www.kaggle.com/datasets/buyungsaloka/motif-batik-dataset)**
 
@@ -95,22 +114,8 @@ archive/
 
 ---
 
-## 📑 Struktur Direktori
-
-```
-.
-├─ README.md
-├─ Kode/
-│  └─ klasifikasi_batik.ipynb
-├─ src/
-│  ├─ app.py
-├─ requirements.txt
-└─ artifacts/
-   ├─ best_model_MobileNetV2.h5
-   ├─ model_batik_mobilenetv2.keras
-   └─ mlruns/
-
-```
+## 🚀 Menjalankan Aplikasi di Hugging Face   
+aa
 
 ---
 
