@@ -1,1 +1,1 @@
-
+model_MobileNetV2.save("model_batik_mobilenetv2.keras")
