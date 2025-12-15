@@ -44,11 +44,7 @@ archive/
 ├─ Kode/
 │  └─ klasifikasi_batik.ipynb
 ├─ src/
-│  ├─ data.py           # utilitas data & eksplorasi
-│  ├─ model.py          # arsitektur & compile
-│  ├─ train.py          # training + MLflow logging
-│  ├─ eval.py           # evaluasi & visualisasi
-│  └─ predict.py        # inferensi gambar
+│  ├─ app.py
 ├─ requirements.txt
 └─ artifacts/
    ├─ best_model_MobileNetV2.h5
