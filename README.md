@@ -4,6 +4,12 @@ Proyek ini bertujuan untuk melakukan **klasifikasi gambar motif batik** mengguna
 
 ---
 
+## 🎯 Tujuan Proyek
+1. Membangun model deep learning untuk klasifikasi motif batik otomatis
+2. Melestarikan warisan budaya melalui teknologi AI
+3. Membuat sistem yang mudah diakses via web interface
+4. Dokumentasi reproducible dengan MLflow
+
 ## ✅ Fitur Utama
 * **Model**: MobileNetV2 (pretrained ImageNet) dengan lapisan GlobalAveragePooling, Dropout, dan Dense untuk klasifikasi.
 * **Pelacakan Eksperimen**: MLflow digunakan untuk mencatat parameter (learning rate, jumlah epoch), metrik per epoch (akurasi dan loss), serta menyimpan model sebagai artifact.
