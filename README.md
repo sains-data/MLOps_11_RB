@@ -115,7 +115,17 @@ archive/
 ---
 
 ## 🚀 Menjalankan Aplikasi di Hugging Face   
-aa
+
+#### Simpan model dalam format Keras
+```
+model_MobileNetV2.save("model_batik_mobilenetv2.keras")
+```
+
+#### Simpan hanya weights
+```
+FILENAME = "model_batik_mobilenetv2.weights.h5"
+model_MobileNetV2.save_weights(FILENAME)
+```
 
 ---
 
