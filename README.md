@@ -199,6 +199,11 @@ huggingface-hub
 ```
 ---
 
+## Hugging Face
+Link: https://huggingface.co/spaces/Nabiilah-Putri/Klasifikasi-Motif-Batik
+
+---
+
 ## 🔧 Persyaratan
 * Python 3.8+
 * TensorFlow/Keras
