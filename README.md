@@ -10,6 +10,30 @@ Proyek ini bertujuan untuk melakukan **klasifikasi gambar motif batik** mengguna
 3. Membuat sistem yang mudah diakses via web interface
 4. Dokumentasi reproducible dengan MLflow
 
+---
+
+## 🏷️ Batik Classifications
+Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
+
+| No | Nama Motif | Asal Daerah | Karakteristik |
+|----|------------|-------------|---------------|
+| 1 | Barong | Bali | Motif mitologis berupa singa dengan mahkota |
+| 2 | Celup | Berbagai daerah | Teknik pewarnaan dengan pencelupan |
+| 3 | Cendrawasih | Papua | Burung cendrawasih dengan warna cerah |
+| 4 | Ceplok | Jawa Tengah | Motif geometris berulang seperti bunga |
+| 5 | Dayak | Kalimantan | Pola etnik dengan simbol budaya Dayak |
+| 6 | Insang | Kalimantan | Motif seperti insang ikan dengan pola lengkung |
+| 7 | Kawung | Jawa | Pola geometris bulatan seperti buah kawung |
+| 8 | Lontara | Sulawesi Selatan | Berbasis aksara Lontara dengan pola simetris |
+| 9 | Mataketeran | Sumbawa | Mata ketengan dengan pola detail rumit |
+| 10 | Megamendung | Cirebon | Awan berwarna cerah dengan gradasi warna |
+| 11 | Ondel-ondel | Betawi | Boneka besar Betami dengan wajah khas |
+| 12 | Parang | Jawa Tengah | Motif diagonal seperti pedang (parang) |
+| 13 | Pring | Yogyakarta | Motif bambu dengan pola vertikal |
+| 14 | Rumah Minang | Sumatera Barat | Pola arsitektur rumah gadang dengan atap khas |
+
+---
+
 ## ✅ Fitur Utama
 * **Model**: MobileNetV2 (pretrained ImageNet) dengan lapisan GlobalAveragePooling, Dropout, dan Dense untuk klasifikasi.
 * **Pelacakan Eksperimen**: MLflow digunakan untuk mencatat parameter (learning rate, jumlah epoch), metrik per epoch (akurasi dan loss), serta menyimpan model sebagai artifact.
