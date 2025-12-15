@@ -127,6 +127,76 @@ FILENAME = "model_batik_mobilenetv2.weights.h5"
 model_MobileNetV2.save_weights(FILENAME)
 ```
 
+#### Instalasi pustaka
+```
+!pip install huggingface-hub -q
+```
+
+#### Login ke Hugging Face Hub
+```
+from huggingface_hub import notebook_login
+notebook_login()  # Masukkan Access Token Hugging Face
+```
+
+#### Tentukan nama repository
+```
+REPO_ID = "Nabiilah-Putri/Batik_Classification"
+MODEL_FILENAME = "model_batik_mobilenetv2.keras"
+CLASSES_FILENAME = "class_names.json"
+```
+
+#### Simpan model
+```
+model_MobileNetV2.save(MODEL_FILENAME)
+print(f"Model disimpan sebagai: {MODEL_FILENAME}")
+```
+
+#### Simpan daftar kelas ke JSON
+```
+class_indices = test_generator.class_indices
+index_to_class = {v: k for k, v in class_indices.items()}
+with open(CLASSES_FILENAME, "w") as f:
+    json.dump(index_to_class, f)
+print(f"Daftar kelas disimpan sebagai: {CLASSES_FILENAME}")
+```
+
+#### Buat Repository baru (jika belum ada)
+```
+create_repo(REPO_ID, exist_ok=True, repo_type="model")
+api = HfApi()
+```
+
+#### Upload file model
+```
+api.upload_file(
+    path_or_fileobj=MODEL_FILENAME,
+    path_in_repo=MODEL_FILENAME,
+    repo_id=REPO_ID,
+    repo_type="model",
+)
+print(f"File {MODEL_FILENAME} berhasil diunggah.")
+```
+
+#### Upload file class names
+```
+api.upload_file(
+    path_or_fileobj=CLASSES_FILENAME,
+    path_in_repo=CLASSES_FILENAME,
+    repo_id=REPO_ID,
+    repo_type="model",
+)
+print(f"File {CLASSES_FILENAME} berhasil diunggah.")
+```
+
+#### menulis requirements.txt
+```
+%%writefile requirements.txt
+tensorflow
+gradio
+numpy
+pillow
+huggingface-hub
+```
 ---
 
 ## 🔧 Persyaratan
