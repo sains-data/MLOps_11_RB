@@ -45,6 +45,7 @@ Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
 
 ## 🏗️ Arsitektur Sistem
 
+```
 1. Data Collection
    ↓
 2. Preprocessing (resize 224x224, normalization, augmentation)
@@ -60,6 +61,7 @@ Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
 7. Model Export (.h5 format)
    ↓
 8. Deployment (Hugging Face Spaces)
+```
 
 ---
 
