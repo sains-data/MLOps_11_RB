@@ -5,7 +5,7 @@ Proyek ini bertujuan untuk melakukan **klasifikasi gambar motif batik** mengguna
 ---
 
 ## 🗓️ MLOps Canvas 
-!
+![MLOps_Canvas](https://github.com/sains-data/MLOps_11_RB/blob/main/MLOps_Canvas.jpeg)
 ---
 
 ## 🎯 Tujuan Proyek
