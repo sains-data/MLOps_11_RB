@@ -4,6 +4,10 @@ Proyek ini bertujuan untuk melakukan **klasifikasi gambar motif batik** mengguna
 
 ---
 
+## 🗓️ MLOps Canvas 
+!
+---
+
 ## 🎯 Tujuan Proyek
 1. Membangun model deep learning untuk klasifikasi motif batik otomatis
 2. Melestarikan warisan budaya melalui teknologi AI
