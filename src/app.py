@@ -4,19 +4,34 @@ import tensorflow as tf
 import numpy as np
 import json
 import gradio as gr
+import os
 from tensorflow.keras.preprocessing import image
-from huggingface_hub import hf_hub_download
+from huggingface_hub import hf_hub_download, HfApi
 from PIL import Image
+from datetime import datetime
 
-# Konfigurasi
+# =========================================================
+# 1. KONFIGURASI & SETUP LOGGING
+# =========================================================
 MODEL_REPO_ID = "Nabiilah-Putri/Batik_Classification"
 WEIGHTS_FILENAME = "model_batik_mobilenetv2.weights.h5"
 CLASSES_FILENAME = "class_names.json"
 
+DATASET_REPO_ID = "Nabiilah-Putri/batik-user-uploads"
+
 IMAGE_SIZE = (224, 224)
 NUM_CLASSES = 14
 
-# Deskripsi Jenis Batik
+api = HfApi()
+
+# Membuat folder untuk menyimpan gambar yang di upload pengguna (MLOps Logging)
+LOG_DIR = "data_logs"
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
+
+# =========================================================
+# 2. DATABASE DESKRIPSI BATIK
+# =========================================================
 BATIK_DESCRIPTIONS = {
     "lontara": (
         "*Asal*: Sulawesi Selatan\n"
@@ -104,7 +119,9 @@ BATIK_DESCRIPTIONS = {
     ),
 }
 
-# Bangun ulang arsitektur model (sama dengan saat training)
+# =========================================================
+# 3. MEMUAT MODEL
+# =========================================================
 def build_model(num_classes):
     # Menggunakan MobileNetV2 base
     base_model = tf.keras.applications.MobileNetV2(
@@ -151,17 +168,35 @@ except Exception as e:
     MODEL_READY = False
     LABEL_NAMES = ["Error"]
 
-# Fungsi Prediksi
+# =========================================================
+# 4. FUNGSI PREDIKSI & LOGGING
+# =========================================================
 def classify_image(input_image: Image.Image):
     if not MODEL_READY:
         return {"Model gagal dimuat": 1.0}, "❌ Model tidak tersedia"
+
+    # FITUR MLOPS: Simpan gambar sementara
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"{timestamp}.png"
+    temp_path = f"/tmp/{filename}"
+    input_image.save(temp_path)
+
+    # UPLOAD KE DATASET
+    try:
+        api.upload_file(
+            path_or_fileobj=temp_path,
+            path_in_repo=filename,
+            repo_id=DATASET_REPO_ID,
+            repo_type="dataset"
+        )
+        log_status = "✅ Gambar berhasil disimpan ke dataset"
+    except Exception as e:
+        log_status = f"❌ Logging gagal: {e}"
 
     # Preprocessing
     img = input_image.convert("RGB").resize(IMAGE_SIZE)
     img_array = image.img_to_array(img)
     processed_img = img_array / 255.0
-
-    # Expand Dimensi (Batch Size)
     img_batch = np.expand_dims(processed_img, axis=0)
 
     # Prediksi
@@ -177,7 +212,7 @@ def classify_image(input_image: Image.Image):
     # Ambil deskripsi berdasarkan kelas teratas
     description = BATIK_DESCRIPTIONS.get(
         top_class,
-        "Deskripsi belum tersedia untuk motif ini. Silakan perbarui kamus BATIK_DESCRIPTIONS."
+        "Deskripsi belum tersedia untuk motif ini."
     )
 
     # Ambil Top-5 untuk Markdown
@@ -192,18 +227,22 @@ def classify_image(input_image: Image.Image):
         f"{description}\n\n"
         f"### 🔝 Top-5 Probabilitas\n"
         f"{top5_md}"
+        f"--- \n"
+        f"*Status MLOps: Gambar disimpan ke dataset Hugging Face sebagai `{filename}`*"
     )
 
     return results, summary
-    
-# INTERFACE GRADIO
+
+# =========================================================
+# 5. TAMPILAN GRADIO (INTERFACE)
+# =========================================================
 with gr.Blocks(theme=gr.themes.Soft()) as demo:
 
     gr.Markdown("""
     # 🇮🇩 Klasifikasi Motif Batik Indonesia
     ### Menggunakan MobileNetV2 (Transfer Learning)
-    Aplikasi ini mengklasifikasikan **14 motif batik Indonesia**
-    menggunakan model **MobileNetV2** dengan lapisan klasifikasi 256 neuron.
+    Aplikasi berbasis MLOps untuk mendeteksi dan mengklasifikasikan **14 motif batik Indonesia**
+    menggunakan model **MobileNetV2** dengan lapisan klasifikasi 256 neuron serta mengumpulkan data secara kontinu.
     **Langkah penggunaan:**
     1. Unggah gambar motif batik
     2. Klik **Submit**
@@ -221,16 +260,16 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         with gr.Column():
             label_output = gr.Label(
                 num_top_classes=5,
-                label="📊 Probabilitas Kelas"
+                label="📊 Probabilitas"
             )
-            summary_output = gr.Markdown()
+            summary_output = gr.Markdown("Hasil analisis akan ditunjukkan disini.")
 
     submit_btn.click(
         fn=classify_image,
         inputs=image_input,
         outputs=[label_output, summary_output]
     )
-    
+
     gr.Markdown("""
     ---
     **Informasi Model**
