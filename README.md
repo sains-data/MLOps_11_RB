@@ -12,7 +12,8 @@ Proyek ini bertujuan untuk melakukan **klasifikasi gambar motif batik** mengguna
 1. Membangun model deep learning untuk klasifikasi motif batik otomatis
 2. Melestarikan warisan budaya melalui teknologi AI
 3. Membuat sistem yang mudah diakses via web interface
-4. Dokumentasi reproducible dengan MLflow
+4. Dokumentasi reproducible dengan MLflow\
+5. Menerapkan alur MLOps end-to-end (deployment, inference, data logging)
 
 ---
 
@@ -205,15 +206,46 @@ huggingface-hub
 
 ## 🌐 **Demo Aplikasi (Hugging Face Spaces):**  
 👉 https://huggingface.co/spaces/Nabiilah-Putri/Klasifikasi-Motif-Batik
+Tidak diperlukan instalasi atau konfigurasi tambahan bagi pengguna.
+
+### 🧭 **Cara Penggunaan Aplikasi**
+**1. Unggah gambar motif batik**
+Aplikasi mendukung beberapa metode unggah gambar:
+1. Upload File
+Mengunggah gambar dari perangkat (format .jpg, .jpeg, .png)
+2. Kamera / Webcam
+Mengambil foto motif batik secara langsung menggunakan kamera
+3. Paste Gambar
+Menempelkan gambar hasil salin (copy–paste) langsung ke area unggah
+
+**2. Klik tombol Submit**
+
+**3. Sistem akan menampilkan:**
+   * Motif batik terdeteksi
+   * Tingkat kepercayaan model
+   * Top-5 probabilitas kelas
+   * Penjelasan singkat motif batik
+
+### 🔍 **Cara Kerja Sistem**
+1. Gambar diproses (resize 224 × 224 dan normalisasi)
+2. Inferensi dilakukan menggunakan model MobileNetV2
+3. Hasil probabilitas dipetakan ke kelas motif batik
+4. Hasil prediksi dan penjelasan motif ditampilkan secara real-time ke pengguna
+
+### ⚙️ **Sistem di Balik Layar**
+* Model diambil otomatis dari Hugging Face Model Hub
+* Inferensi dijalankan langsung di server Hugging Face
+* Setiap gambar pengguna dicatat dan diunggah ke Hugging Face Dataset sebagai bagian dari penerapan MLOps (continuous data collection)
 
 ---
 
-## 🔧 Persyaratan
+## 🔧 Teknologi yang Digunakan
 * Python 3.8+
 * TensorFlow/Keras
 * scikit-learn
 * pandas, numpy, matplotlib, seaborn
 * mlflow
+* Hugging Face (Spaces, Model Hub, Dataset Hub)
 
 ## 👥 Kredit Tim
 Kelompok 11 — MLOps RB :
