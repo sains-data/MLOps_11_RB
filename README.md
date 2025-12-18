@@ -39,7 +39,7 @@ Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
 ---
 
 ## ✅ Fitur Utama
-* **Model**: MobileNetV2 (pretrained ImageNet) dengan lapisan GlobalAveragePooling, Dropout, dan Dense untuk klasifikasi.
+* **Model**: MobileNetV2 dengan lapisan GlobalAveragePooling, Dropout, dan Dense untuk klasifikasi.
 * **Pelacakan Eksperimen**: MLflow digunakan untuk mencatat parameter (learning rate, jumlah epoch), metrik per epoch (akurasi dan loss), serta menyimpan model sebagai artifact.
 * **Pipeline Data**: Menggunakan generator berbasis `ImageDataGenerator` untuk normalisasi dan manajemen batch dataset.
 * **Evaluasi Lengkap**: Termasuk confusion matrix, classification report, dan pengukuran waktu inferensi rata-rata per sampel.
@@ -52,9 +52,9 @@ Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
 ```
 1. Data Collection
    ↓
-2. Preprocessing (resize 224x224, normalization, augmentation)
+2. Preprocessing (resize 224x224, normalization)
    ↓
-3. Data Splitting (Train 80%, Validation 10%, Test 10%)
+3. Data Splitting (Train 80%, Validation 15%, Test 5%)
    ↓
 4. Model Building (MobileNetV2 base + custom layers)
    ↓
@@ -89,7 +89,7 @@ Model dapat mengklasifikasikan 14 motif batik tradisional Indonesia:
 ---
 
 ## 📂 Dataset
-Dataset tersedia di Google Drive: **(https://www.kaggle.com/datasets/buyungsaloka/motif-batik-dataset)**
+Dataset tersedia di Kaggle Dataset: **(https://www.kaggle.com/datasets/buyungsaloka/motif-batik-dataset)**
 
 ### **Karakteristik Dataset:**
 - **Total Gambar**: ~1,400 gambar (14 kelas × ~100 gambar/kelas)
