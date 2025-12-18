@@ -250,7 +250,11 @@ Menempelkan gambar hasil salin (copy–paste) langsung ke area unggah
 
 ## 👥 Kredit Tim
 Kelompok 11 — MLOps RB :
-* Amalia Melani Putri
-* Azizah Kusumah Putri
-* Fayyaza Aqila Syafitri Achjar
-* Nabiilah Putri Karnaia
+
+| Nama Anggota | Peran / Kontribusi |
+| :--- | :--- |
+| **Nabiilah Putri Karnaia** | Integrasi Model ke HF Hub, Arsitektur App.py & Gradio UI |
+| **Azizah Kusumah Putri** | Dataset Preparation & Training MobileNetV2 |
+| **Amalia Melani Putri** | Augmentasi & Preprocessing |
+| **Fayyaza Aqila Syafitri Achjar** | Optimasi Parameter, Implementasi MLFlow & Analisis Metrik Evaluasi |
+
