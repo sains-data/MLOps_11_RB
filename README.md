@@ -206,6 +206,7 @@ huggingface-hub
 
 ## 🌐 **Demo Aplikasi (Hugging Face Spaces):**  
 👉 https://huggingface.co/spaces/Nabiilah-Putri/Klasifikasi-Motif-Batik
+
 Tidak diperlukan instalasi atau konfigurasi tambahan bagi pengguna.
 
 ### 🧭 **Cara Penggunaan Aplikasi**
